@@ -1,0 +1,11 @@
+GameProject {
+ ID "ME_Conflict_Spawn_Helpers"
+ GUID "5772AF43F501410A"
+ TITLE "ME_Conflict_Spawn_Helpers"
+ Dependencies {
+  "58D0FB3206B6F859"
+ }
+ Configurations {
+  GameProjectConfig PC {}
+ }
+}

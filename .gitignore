@@ -1,0 +1,5 @@
+# Personal tool settings
+.claude/settings.local.json
+.claude/worktrees/
+# Logs
+*.log
