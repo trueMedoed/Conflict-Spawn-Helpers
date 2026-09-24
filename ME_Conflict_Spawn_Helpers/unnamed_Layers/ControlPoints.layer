@@ -1,0 +1,29 @@
+$grp GenericEntity : "{2E4F096844CDC14B}Prefabs/Systems/MilitaryBase/ConflictControlPoint.et" {
+ FIA_ConflictControlPoint {
+  components {
+   SCR_FactionAffiliationComponent "{621EB97024DABA88}" {
+    "faction affiliation" "FIA"
+   }
+  }
+  coords 25 1 170
+  angles 0 90 0
+ }
+ USSR_ConflictControlPoint {
+  components {
+   SCR_FactionAffiliationComponent "{621EB97024DABA88}" {
+    "faction affiliation" "USSR"
+   }
+  }
+  coords 25 1 230
+  angles 0 90 0
+ }
+ US_ConflictControlPoint {
+  components {
+   SCR_FactionAffiliationComponent "{621EB97024DABA88}" {
+    "faction affiliation" "US"
+   }
+  }
+  coords 25 1 200
+  angles 0 90 0
+ }
+}

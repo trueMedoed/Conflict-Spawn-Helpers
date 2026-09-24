@@ -1,0 +1,29 @@
+$grp GenericEntity : "{8BEE4B0606893CDF}Prefabs/Systems/MilitaryBase/ConflictSourceBase_T1Harbor.et" {
+ FIA_ConflictSourceBase_T1Harbor {
+  components {
+   SCR_FactionAffiliationComponent "{621EB97024DABA88}" {
+    "faction affiliation" "FIA"
+   }
+  }
+  coords 75 1 170
+  angles 0 90 0
+ }
+ USSR_ConflictSourceBase_T1Harbor {
+  components {
+   SCR_FactionAffiliationComponent "{621EB97024DABA88}" {
+    "faction affiliation" "USSR"
+   }
+  }
+  coords 70.847 1 226.305
+  angles 0 90 0
+ }
+ US_ConflictSourceBase_T1Harbor {
+  components {
+   SCR_FactionAffiliationComponent "{621EB97024DABA88}" {
+    "faction affiliation" "US"
+   }
+  }
+  coords 74.005 1 196.795
+  angles 0 90 0
+ }
+}
