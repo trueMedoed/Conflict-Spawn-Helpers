@@ -14,7 +14,7 @@ $grp GenericEntity : "{8BEE4B0606893CDF}Prefabs/Systems/MilitaryBase/ConflictSou
     "faction affiliation" "USSR"
    }
   }
-  coords 70.847 1 226.305
+  coords 75 1 230
   angles 0 90 0
  }
  US_ConflictSourceBase_T1Harbor {
@@ -23,7 +23,7 @@ $grp GenericEntity : "{8BEE4B0606893CDF}Prefabs/Systems/MilitaryBase/ConflictSou
     "faction affiliation" "US"
    }
   }
-  coords 74.005 1 196.795
+  coords 75 1 200
   angles 0 90 0
  }
 }

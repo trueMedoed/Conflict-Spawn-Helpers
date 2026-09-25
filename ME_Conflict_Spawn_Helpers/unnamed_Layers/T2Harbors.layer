@@ -1,3 +1,26 @@
-GenericEntity : "{E7BA7FE6BA4DB3F1}Prefabs/Systems/MilitaryBase/ConflictSourceBase_T2Harbor.et" {
- coords 114.501 1 77.618
+$grp GenericEntity : "{E7BA7FE6BA4DB3F1}Prefabs/Systems/MilitaryBase/ConflictSourceBase_T2Harbor.et" {
+ FIA_ConflictSourceBase_T2Harbor {
+  components {
+   SCR_FactionAffiliationComponent "{621EB97024DABA88}" {
+    "faction affiliation" "FIA"
+   }
+  }
+  coords 100 1 170
+ }
+ US_ConflictSourceBase_T2Harbor {
+  components {
+   SCR_FactionAffiliationComponent "{621EB97024DABA88}" {
+    "faction affiliation" "US"
+   }
+  }
+  coords 100 1 200
+ }
+ USSR_ConflictSourceBase_T2Harbor {
+  components {
+   SCR_FactionAffiliationComponent "{621EB97024DABA88}" {
+    "faction affiliation" "USSR"
+   }
+  }
+  coords 100 1 230
+ }
 }
