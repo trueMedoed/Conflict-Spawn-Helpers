@@ -6,7 +6,7 @@ The Russian reference translation is in [RU_DESCRIPTION.md](RU_DESCRIPTION.md). 
 
 ## Summary
 
-Preview Conflict base compositions in Workbench before starting a mission. Includes faction-aware holograms, shared HQ footprint bounds, and brightly highlighted supply signs.
+Place Conflict bases and supply sources with confidence: preview where objects will appear and which way the supply storage interaction sign will face.
 
 ## Description
 
