@@ -2,6 +2,8 @@
 
 Рабочая версия помощника для разработки Conflict в Arma Reforger Workbench. Показывает голограммы будущих композиций у баз до запуска миссии.
 
+Какую проблему решает мод и как устроены подсказки: [русское описание](docs/HOW_IT_WORKS_RU.md) / [English explanation](docs/HOW_IT_WORKS.md).
+
 ## Использование
 
 1. Откройте `ME_Conflict_Spawn_Helpers/addon.gproj` в Workbench. Если проект был открыт до изменения скриптов, переоткройте его.
