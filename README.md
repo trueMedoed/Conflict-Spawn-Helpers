@@ -42,3 +42,7 @@
 `tools/ME_CSH_Audit.c` и `tools/ME_CSH_AuditGame.c` — исходники диагностического теста. Они находятся вне каталога аддона и не компилируются/не поставляются с ним. Порядок использования и результаты записаны в `docs/VALIDATION.md`.
 
 Постановка задачи и дальнейшая работа — `TODO.md`. Механизм vanilla-спавна — `docs/SPAWN_RESEARCH.md`.
+
+## Тексты для Workshop
+
+Английские поля Summary и Description: [docs/workshop/DESCRIPTION.md](docs/workshop/DESCRIPTION.md). Русский перевод для сверки: [docs/workshop/RU_DESCRIPTION.md](docs/workshop/RU_DESCRIPTION.md). Заметки первого выпуска: [docs/workshop/CHANGELOG.md](docs/workshop/CHANGELOG.md). Публикация ещё не подтверждена; номер и дату выпуска нужно внести после неё.
