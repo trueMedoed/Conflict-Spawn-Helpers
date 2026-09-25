@@ -1,4 +1,4 @@
-[WorkbenchPluginAttribute(name: "Toggle Conflict spawn previews", description: "Show or hide future Conflict base compositions.", wbModules: { "WorldEditor" }, category: "Conflict Spawn Helpers")]
+[WorkbenchPluginAttribute(name: "Toggle Conflict spawn previews", description: "Show or hide future Conflict base compositions.", wbModules: { "WorldEditor" }, category: "[ME] Conflict Spawn Helpers")]
 class ME_CSH_PreviewPlugin : WorldEditorPlugin
 {
  override void Run()
@@ -17,7 +17,7 @@ class ME_CSH_PreviewPlugin : WorldEditorPlugin
  }
 }
 
-[WorkbenchPluginAttribute(name: "Cycle Conflict preview faction (Auto/US/USSR/FIA)", description: "Choose a planning variant without changing the mission faction.", wbModules: { "WorldEditor" }, category: "Conflict Spawn Helpers")]
+[WorkbenchPluginAttribute(name: "Cycle Conflict preview faction (Auto/US/USSR/FIA)", description: "Choose a planning variant without changing the mission faction.", wbModules: { "WorldEditor" }, category: "[ME] Conflict Spawn Helpers")]
 class ME_CSH_FactionPreviewPlugin : WorldEditorPlugin
 {
  override void Run()

@@ -33,7 +33,7 @@ How to use
 1. Load the addon in Workbench and open your Conflict world in World Editor.
 2. Make sure the world has a CampaignFactionManager with the required campaign factions and building compositions configured.
 3. Place one of the supported points, or inspect points already present in the scenario. Previews are enabled by default for visible points.
-4. Open Plugins → Conflict Spawn Helpers → Toggle Conflict spawn previews to show or hide the helpers.
+4. Open Plugins → [ME] Conflict Spawn Helpers → Toggle Conflict spawn previews to show or hide the helpers.
 5. Use Cycle Conflict preview faction (Auto/US/USSR/FIA) to inspect a specific faction's composition. Manual faction selection hides the combined HQ outline.
 6. Leave space around the preview and check the actual composition in Game mode, especially on slopes.
 

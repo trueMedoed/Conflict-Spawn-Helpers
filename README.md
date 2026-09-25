@@ -9,7 +9,7 @@
 1. Откройте `ME_Conflict_Spawn_Helpers/addon.gproj` в Workbench. Если проект был открыт до изменения скриптов, переоткройте его.
 2. Откройте свою Conflict-сцену с настроенным CampaignFactionManager. Обычный FactionManager без SCR_CampaignFaction не содержит нужных настроек построек.
 3. Разместите `ConflictBase_MOB`, `ConflictControlPoint` или `ConflictSourceBase_T1Harbor/T2Harbor/T3Harbor`. Подсказки включены по умолчанию и обновляются для видимых точек.
-4. В меню Plugins → Conflict Spawn Helpers доступны команды:
+4. В меню Plugins → [ME] Conflict Spawn Helpers доступны команды:
    - **Toggle Conflict spawn previews** — включить/выключить подсказки.
    - **Cycle Conflict preview faction (Auto/US/USSR/FIA)** — переключить вариант композиции без изменения фракции миссии.
 

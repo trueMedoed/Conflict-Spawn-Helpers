@@ -20,7 +20,7 @@ The helpers support ConflictBase_MOB, ConflictControlPoint, and ConflictSourceBa
 
 Holograms appear alongside the point, showing the composition elements included in its preview data: tents, storage, shelters, crates, and other objects. The previews follow the marker's position and rotation. The construction-supply storage sign uses a solid bright orange material so it stands out among the translucent objects.
 
-Plugins → Conflict Spawn Helpers provides two commands:
+Plugins → [ME] Conflict Spawn Helpers provides two commands:
 
 - **Toggle Conflict spawn previews** — show or hide the helpers.
 - **Cycle Conflict preview faction (Auto/US/USSR/FIA)** — switch the composition variant for inspection without changing the mission's faction assignments.
