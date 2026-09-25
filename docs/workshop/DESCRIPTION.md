@@ -1,6 +1,6 @@
 # Workshop page text
 
-Source text for the Summary and Description fields of ME_Conflict_Spawn_Helpers. Prepared for the first release; publication has not been confirmed. Copy only the text beneath each field heading. Preserve the literal • bullets and numbered steps when pasting.
+Source text for the Summary and Description fields of ME_Conflict_Spawn_Helpers. Release 1.0: publication and a Workshop photo confirmed by the author on 2026-09-25. Copy only the text beneath each field heading. Preserve the literal • bullets and numbered steps when pasting.
 
 The Russian reference translation is in [RU_DESCRIPTION.md](RU_DESCRIPTION.md). Keep both versions synchronized. Release notes are in [CHANGELOG.md](CHANGELOG.md).
 

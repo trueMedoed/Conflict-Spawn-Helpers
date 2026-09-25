@@ -47,4 +47,4 @@
 
 ## Тексты для Workshop
 
-Английские поля Summary и Description: [docs/workshop/DESCRIPTION.md](docs/workshop/DESCRIPTION.md). Русский перевод для сверки: [docs/workshop/RU_DESCRIPTION.md](docs/workshop/RU_DESCRIPTION.md). Заметки первого выпуска: [docs/workshop/CHANGELOG.md](docs/workshop/CHANGELOG.md). Публикация ещё не подтверждена; номер и дату выпуска нужно внести после неё.
+Английские поля Summary и Description: [docs/workshop/DESCRIPTION.md](docs/workshop/DESCRIPTION.md). Русский перевод для сверки: [docs/workshop/RU_DESCRIPTION.md](docs/workshop/RU_DESCRIPTION.md). Заметки первого выпуска: [docs/workshop/CHANGELOG.md](docs/workshop/CHANGELOG.md). Версия **1.0** опубликована в Workshop; публикация и добавление фото подтверждены пользователем 25.09.2026.
