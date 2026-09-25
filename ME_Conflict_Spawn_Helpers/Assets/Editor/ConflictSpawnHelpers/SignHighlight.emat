@@ -1,0 +1,13 @@
+MatCommon {
+ Color 1 0.55 0.015 1
+ Cull none
+ ZEnable 1
+ ZWrite 1
+ CastShadow 0
+ ReceiveShadow 0
+ SpecularMul 0
+ AlphaMul 1
+ DisableVertexColor 1
+ DisablePrexposure 1
+ EnableFresnelToOpacity 0
+}

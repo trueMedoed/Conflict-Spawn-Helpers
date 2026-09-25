@@ -243,7 +243,7 @@ modded class SCR_CampaignMilitaryBaseComponent
    params.TransformMode = ETransformMode.WORLD;
    Math3D.AnglesToMatrix(owner.GetYawPitchRoll(), params.Transform);
    params.Transform[3] = owner.GetOrigin();
-   SCR_BasePreviewEntity preview = SCR_BasePreviewEntity.SpawnPreview(entries, "SCR_BasePreviewEntity", owner.GetWorld(), params, "{58F07022C12D0CF5}Assets/Editor/PlacingPreview/Preview.emat", EPreviewEntityFlag.IGNORE_TERRAIN);
+   SCR_BasePreviewEntity preview = SCR_BasePreviewEntity.SpawnPreview(entries, "ME_CSH_PreviewEntity", owner.GetWorld(), params, "{58F07022C12D0CF5}Assets/Editor/PlacingPreview/Preview.emat", EPreviewEntityFlag.IGNORE_TERRAIN);
    if (!preview)
    {
     m_CSH_Warnings += " / preview failed";

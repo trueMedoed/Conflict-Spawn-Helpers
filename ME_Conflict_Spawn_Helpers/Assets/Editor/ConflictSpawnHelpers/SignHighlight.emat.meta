@@ -1,0 +1,17 @@
+MetaFileClass {
+ Name "{FF26FD6B6D4EDF7E}Assets/Editor/ConflictSpawnHelpers/SignHighlight.emat"
+ Configurations {
+  EMATResourceClass PC {
+  }
+  EMATResourceClass XBOX_ONE : PC {
+  }
+  EMATResourceClass XBOX_SERIES : PC {
+  }
+  EMATResourceClass PS4 : PC {
+  }
+  EMATResourceClass PS5 : PC {
+  }
+  EMATResourceClass HEADLESS : PC {
+  }
+ }
+}

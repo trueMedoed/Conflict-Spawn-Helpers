@@ -51,3 +51,15 @@ SpawnBuilding (2601–2650): world position и yaw/pitch/roll берутся у 
 25.09.2026: проверен локальный SCR_CampaignMilitaryBaseManager.c, InitializeBases (около строки 604). Если текущий владелец отсутствует, игра использует GetFaction(true), затем GetFactionByEnum(SCR_ECampaignFaction.INDFOR) из текущего SCR_GameModeCampaign. Preview теперь использует тот же fallback для точек без CanBeHQ, читая настройки без SetFaction и без запуска InitializeBases. INDFOR не обязательно FIA: ключ задаёт миссия. В CTI_Campaign_HQC_Arland.ent присутствуют SCR_GameModeCampaign (GameMode_CampaignHQC) и SCR_CampaignFactionManager.
 
 HQ обрабатываются отдельно в SetHQFactions: назначение BLUFOR/OPFOR зависит от выбранной пары и исходных владельцев. Помощник пока сохраняет набор возможных композиций для CanBeHQ и не имитирует случайный выбор штабов.
+
+## Отдельный цвет таблички (sign), 25.09.2026
+
+Статическое исследование исходников установленной игры 1.8.0.13: техническая возможность подтверждена, реализация и визуальная проверка ещё не выполнены.
+
+В каждой из шести Prefabs/Compositions/Slotted/SlotFlatSmall/{Headquarters_S_Conflict,SourceBase_S}_{US,USSR,FIA}_01.et есть отдельная GenericEntity со ссылкой на Prefabs/Structures/Signs/Military/Supplies/Sign_SupplyStorage_01_ConstructionMat_{US,USSR,FIA}.et. Общий предок — {AA1CD0B1E6F3C561}Prefabs/Structures/Signs/Military/Supplies/Sign_SupplyStorage_01_ConstructionMat_base.et. Это позволяет отличать нужную табличку от произвольных объектов со словом sign в названии; распознавание предков нужно проверить на реальных preview entries, включая вложенные элементы.
+
+SCR_PrefabPreviewEntity.GetPreviewEntries сохраняет IEntitySource в entry.m_EntitySource. SCR_BasePreviewEntity.SpawnPreview создаёт каждую mesh-сущность и вызывает protected EOnPreviewInit(entry, rootEntity). В наследнике нашего preview можно переопределить этот callback, распознать табличку по источнику и вызвать у неё SetPreviewObject(GetVObject(), material). SetPreviewObject — protected штатный метод: переназначает материалы только модели этой preview-сущности через SetObject. Остальные объекты композиции и игровой prefab изменять не требуется. Рекомендуется собственный класс preview, а не глобальное изменение SCR_BasePreviewEntity для всех инструментов.
+
+Готовый материал Assets/Editor/PlacingPreview/PreviewWarning.emat имеет золотистый Color 0.517 0.423 0.13 1 вместо серого 0.513 0.513 0.513 1 у Preview.emat. У обоих Additive и AlphaMul 0.3. Его можно использовать для первого прототипа без создания нового материала; GUID следует получить через Workbench. Окончательный контраст на фоне земли проверяется в viewport.
+
+План проверки: распознать sign в HQ и SourceBase всех трёх фракций; убедиться, что перекрашена только табличка; проверить Auto с одной крупнейшей HQ-композицией, ручные варианты, перемещение, удаление и Edit/Game. Неизвестные модифицированные sign должны сохранять обычный материал при отсутствии надёжного совпадения. Пользовательские миры и production-скрипты в ходе исследования не менялись.
