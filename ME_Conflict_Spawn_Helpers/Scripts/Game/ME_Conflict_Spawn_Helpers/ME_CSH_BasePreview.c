@@ -8,10 +8,13 @@ modded class SCR_CampaignMilitaryBaseComponent
  protected string m_CSH_Warnings;
  protected ref array<SCR_BasePreviewEntity> m_CSH_Previews = {};
  protected ref array<ResourceName> m_CSH_Prefabs = {};
+ protected ref array<string> m_CSH_Factions = {};
+ protected ref array<int> m_CSH_FactionColors = {};
  protected string m_CSH_Caption;
  protected float m_CSH_RefreshTimer;
  protected bool m_CSH_Dirty = true;
  protected bool m_CSH_Overview;
+ protected bool m_CSH_ColorFlags;
  protected bool m_CSH_HasBounds;
  protected vector m_CSH_Min;
  protected vector m_CSH_Max;
@@ -62,20 +65,30 @@ modded class SCR_CampaignMilitaryBaseComponent
   }
   m_CSH_Previews.Clear();
   m_CSH_Prefabs.Clear();
+  m_CSH_Factions.Clear();
+  m_CSH_FactionColors.Clear();
   m_CSH_HasBounds = false;
  }
 
- protected void CSH_AddFaction(SCR_CampaignFaction faction, EEditableEntityLabel label, array<ResourceName> prefabs)
+ protected void CSH_AddFaction(SCR_CampaignFaction faction, EEditableEntityLabel label, array<ResourceName> prefabs, array<string> factionKeys)
  {
   if (!faction)
    return;
   ResourceName prefab = faction.GetBuildingPrefab(label);
-  if (!prefab.IsEmpty() && !prefabs.Contains(prefab))
+  if (prefab.IsEmpty())
+   return;
+  int index = prefabs.Find(prefab);
+  if (index == -1)
+  {
    prefabs.Insert(prefab);
+   factionKeys.Insert(faction.GetFactionKey());
+  }
+  else if (factionKeys[index] != faction.GetFactionKey())
+   factionKeys[index] = ""; // Shared composition: no unique faction to advertise.
  }
 
  //! Read the current world's factions; never initialize gameplay or change affiliation.
- protected void CSH_Resolve(IEntity owner, array<ResourceName> prefabs)
+ protected void CSH_Resolve(IEntity owner, array<ResourceName> prefabs, array<string> factionKeys)
  {
   EEditableEntityLabel label;
   switch (GetType())
@@ -89,7 +102,7 @@ modded class SCR_CampaignMilitaryBaseComponent
   if (!s_CSH_FactionFilter.IsEmpty())
   {
    if (manager)
-    CSH_AddFaction(SCR_CampaignFaction.Cast(manager.GetFactionByKey(s_CSH_FactionFilter)), label, prefabs);
+    CSH_AddFaction(SCR_CampaignFaction.Cast(manager.GetFactionByKey(s_CSH_FactionFilter)), label, prefabs, factionKeys);
    m_CSH_Caption = string.Format("Conflict: planning variant %1 (not a spawn prediction)", s_CSH_FactionFilter);
    if (prefabs.IsEmpty())
     m_CSH_Caption += " / no configured composition";
@@ -108,7 +121,7 @@ modded class SCR_CampaignMilitaryBaseComponent
   {
    if (!assigned && campaign)
     assigned = campaign.GetFactionByEnum(SCR_ECampaignFaction.INDFOR);
-   CSH_AddFaction(assigned, label, prefabs);
+   CSH_AddFaction(assigned, label, prefabs, factionKeys);
   }
   if (!prefabs.IsEmpty())
   {
@@ -121,7 +134,7 @@ modded class SCR_CampaignMilitaryBaseComponent
    array<Faction> factions = {};
    manager.GetFactionsList(factions);
    foreach (Faction faction : factions)
-    CSH_AddFaction(SCR_CampaignFaction.Cast(faction), label, prefabs);
+    CSH_AddFaction(SCR_CampaignFaction.Cast(faction), label, prefabs, factionKeys);
   }
   if (prefabs.IsEmpty())
    m_CSH_Caption = "Conflict: preview unavailable - add a campaign FactionManager";
@@ -187,17 +200,43 @@ modded class SCR_CampaignMilitaryBaseComponent
   Shape.CreateLinesLoop(Color.YELLOW, ShapeFlags.ONCE | ShapeFlags.NOZBUFFER, corners, 4, 2);
  }
 
+ protected int CSH_GetFactionColor(string factionKey)
+ {
+  if (factionKey.IsEmpty())
+   return 0;
+  FactionManager manager = GetGame().GetFactionManager();
+  if (!manager)
+   return 0;
+  Faction faction = manager.GetFactionByKey(factionKey);
+  if (!faction)
+   return 0;
+  Color color = faction.GetFactionColor();
+  if (!color)
+   return 0;
+  return color.PackToInt();
+ }
+
  protected void CSH_Rebuild(IEntity owner)
  {
   array<ResourceName> prefabs = {};
-  CSH_Resolve(owner, prefabs);
+  array<string> factionKeys = {};
+  CSH_Resolve(owner, prefabs, factionKeys);
   bool overview = CanBeHQ() && s_CSH_FactionFilter.IsEmpty();
-  bool changed = m_CSH_Dirty || overview != m_CSH_Overview || prefabs.Count() != m_CSH_Prefabs.Count();
+  bool colorFlags = !overview; // Only the combined HQ overview stays neutral.
+  array<int> factionColors = {};
+  foreach (string factionKey : factionKeys)
+  {
+   int color;
+   if (colorFlags)
+    color = CSH_GetFactionColor(factionKey);
+   factionColors.Insert(color);
+  }
+  bool changed = m_CSH_Dirty || colorFlags != m_CSH_ColorFlags || overview != m_CSH_Overview || prefabs.Count() != m_CSH_Prefabs.Count();
   if (!changed)
   {
    foreach (int index, ResourceName prefab : prefabs)
    {
-    if (prefab != m_CSH_Prefabs[index])
+    if (prefab != m_CSH_Prefabs[index] || factionKeys[index] != m_CSH_Factions[index] || factionColors[index] != m_CSH_FactionColors[index])
      changed = true;
    }
   }
@@ -207,12 +246,15 @@ modded class SCR_CampaignMilitaryBaseComponent
   CSH_Clear();
   m_CSH_Dirty = false;
   m_CSH_Overview = overview;
+  m_CSH_ColorFlags = colorFlags;
   SCR_BasePreviewEntity largest;
   float largestArea = -1;
   m_CSH_Warnings = "";
-  foreach (ResourceName prefab : prefabs)
+  foreach (int prefabIndex, ResourceName prefab : prefabs)
   {
    m_CSH_Prefabs.Insert(prefab);
+   m_CSH_Factions.Insert(factionKeys[prefabIndex]);
+   m_CSH_FactionColors.Insert(factionColors[prefabIndex]);
    Resource resource = Resource.Load(prefab);
    if (!resource || !resource.IsValid())
    {
@@ -243,12 +285,15 @@ modded class SCR_CampaignMilitaryBaseComponent
    params.TransformMode = ETransformMode.WORLD;
    Math3D.AnglesToMatrix(owner.GetYawPitchRoll(), params.Transform);
    params.Transform[3] = owner.GetOrigin();
-   SCR_BasePreviewEntity preview = SCR_BasePreviewEntity.SpawnPreview(entries, "ME_CSH_PreviewEntity", owner.GetWorld(), params, "{58F07022C12D0CF5}Assets/Editor/PlacingPreview/Preview.emat", EPreviewEntityFlag.IGNORE_TERRAIN);
+   SCR_BasePreviewEntity preview = SCR_BasePreviewEntity.SpawnPreview(entries, "{698891CB96CFF3B9}Prefabs/Editor/ME_CSH_PreviewEntity.et", owner.GetWorld(), params, "{58F07022C12D0CF5}Assets/Editor/PlacingPreview/Preview.emat", EPreviewEntityFlag.IGNORE_TERRAIN);
    if (!preview)
    {
     m_CSH_Warnings += " / preview failed";
     continue;
    }
+   string flagFaction;
+   if (colorFlags) flagFaction = factionKeys[prefabIndex];
+   ME_CSH_PreviewEntity.Cast(preview).CSH_SetFaction(flagFaction, factionColors[prefabIndex]);
    preview.SetFlags(EntityFlags.EDITOR_ONLY, true);
    preview.ClearFlags(EntityFlags.TRACEABLE, true);
    if (overview)

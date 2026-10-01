@@ -1,0 +1,6 @@
+ME_CSH_PreviewEntity : {
+ components {
+  ParametricMaterialInstanceComponent "{5D65A52FBD72F00A}" {
+  }
+ }
+}

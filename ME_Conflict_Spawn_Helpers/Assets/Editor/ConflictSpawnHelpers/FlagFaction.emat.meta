@@ -1,0 +1,17 @@
+MetaFileClass {
+ Name "{9B4912FD556246EE}Assets/Editor/ConflictSpawnHelpers/FlagFaction.emat"
+ Configurations {
+  EMATResourceClass PC {
+  }
+  EMATResourceClass XBOX_ONE : PC {
+  }
+  EMATResourceClass XBOX_SERIES : PC {
+  }
+  EMATResourceClass PS4 : PC {
+  }
+  EMATResourceClass PS5 : PC {
+  }
+  EMATResourceClass HEADLESS : PC {
+  }
+ }
+}

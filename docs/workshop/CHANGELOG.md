@@ -2,6 +2,20 @@
 
 Заметки к выпускам ME_Conflict_Spawn_Helpers. Английский блок предназначен для поля изменений Workshop; русский — для сверки. После публикации замените Unreleased фактическим номером версии и датой публикации. Не считайте дату подготовки датой выпуска.
 
+## Unreleased
+
+Изменения в разработке после 1.0. Визуальная приёмка и публикация ещё не подтверждены.
+
+### English
+
+• Filled preview flag cloth with each faction's color from the world's FactionManager, including configured custom factions. Auto keeps the combined HQ preview neutral while ordinary points retain their resolved faction color. Manual faction selection also colors HQ flags.
+• Kept unresolved factions and compositions shared by multiple factions neutral.
+
+### Русский
+
+• Полотно флага голограммы получает сплошную заливку цветом фракции из FactionManager мира, включая настроенные пользовательские фракции. В Auto нейтральным остаётся общий HQ; обычные точки сохраняют цвет определённой фракции. При ручном выборе фракции окрашиваются и флаги HQ.
+• Для неопределённой фракции и общих неоднозначных композиций сохранён нейтральный цвет.
+
 ## 1.0 | 2026-09-25
 
 Публикация версии 1.0 и добавление фото в Workshop подтверждены пользователем 2026-09-25.
