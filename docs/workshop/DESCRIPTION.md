@@ -1,8 +1,9 @@
 # Workshop page text
 
-Source text for the Summary and Description fields of ME_Conflict_Spawn_Helpers. Release 1.0: publication and a Workshop photo confirmed by the author on 2026-09-25. Copy only the text beneath each field heading. Preserve the literal • bullets and numbered steps when pasting.
+Source text for the Summary and Description fields of ME_Conflict_Spawn_Helpers. Version 1.0.1 is prepared but not yet published; version 1.0 and its Workshop photo were confirmed by the author on 2026-09-25. Copy only the text beneath each field heading. Preserve the literal • bullets and numbered steps when pasting.
 
 The Russian reference translation is in [RU_DESCRIPTION.md](RU_DESCRIPTION.md). Keep both versions synchronized. Release notes are in [CHANGELOG.md](CHANGELOG.md).
+Suggested 1.0.1 screenshot: [colored flag and supply sign](<../../imgs/Screenshot 2026-10-01 124856.png>).
 
 ## Summary
 
@@ -25,6 +26,7 @@ Features
 • Auto uses an ordinary point's default faction. When none is assigned, it reads the INDFOR faction configured in the current Conflict GameMode.
 • For HQ candidates, Auto shows one composition with the largest rectangular footprint, plus a yellow rectangle enclosing the preview geometry of all available variants. The caption explains that the final composition may occupy less space.
 • Highlights the construction-supply sign with a solid bright orange material so it is easier to locate.
+• Fills flag cloth with the shown composition's faction color from the world's FactionManager; the flagpole keeps the regular hologram look. The combined HQ preview stays neutral in Auto.
 • Lets you toggle previews and cycle through Auto, US, USSR, and FIA without changing the mission's faction assignments.
 • Cleans up previews when points are deleted and during Edit/Game transitions. Preview geometry has no physics and is not saved as mission objects.
 • Includes unnamed.ent, a Workbench test world with base points and faction-specific Harbor examples.
@@ -44,6 +46,7 @@ Notes and limitations
 • The HQ outline is a conservative rectangle around available preview geometry, not an exact collision outline or a prediction of the selected HQ faction. A candidate configured to disappear when not selected as HQ may have no composition at all.
 • If an ordinary point's faction cannot be resolved, the helper shows the available unique composition variants. Overlapping holograms can be inspected using the manual faction selector.
 • Orange highlighting recognizes descendants of the standard construction-supply sign prefab. Unrecognized custom signs keep the normal preview material.
+• A colored flag identifies the faction of the shown composition, not a prediction of future base ownership. Unresolved factions and compositions shared by multiple factions keep a neutral flag.
 • Auto can read custom campaign factions; the manual selector uses the vanilla US, USSR, and FIA keys. Compatibility with other mods has not been verified.
 • Tested with Arma Reforger Workbench 1.8.0.13. The included test world is an editor demonstration, not a complete playable Conflict scenario.
 • After changing addon scripts, restart Workbench. After changing composition resources, toggling previews or reopening the world may be necessary.

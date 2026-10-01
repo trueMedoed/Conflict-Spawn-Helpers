@@ -18,7 +18,7 @@ Conflict Spawn Helpers shows the future composition while you edit: the hologram
 
 The helpers support ConflictBase_MOB, ConflictControlPoint, and ConflictSourceBase_T1Harbor/T2Harbor/T3Harbor.
 
-Holograms appear alongside the point, showing the composition elements included in its preview data: tents, storage, shelters, crates, and other objects. The previews follow the marker's position and rotation. The construction-supply storage sign uses a solid bright orange material so it stands out among the translucent objects.
+Holograms appear alongside the point, showing the composition elements included in its preview data: tents, storage, shelters, crates, and other objects. The previews follow the marker's position and rotation. The construction-supply storage sign uses a solid bright orange material so it stands out among the translucent objects. The flag cloth receives a solid fill in the shown composition's faction color; the flagpole keeps the regular hologram look.
 
 Plugins → [ME] Conflict Spawn Helpers provides two commands:
 
@@ -47,6 +47,8 @@ The helper uses the prefab's standard preview data and creates temporary geometr
 
 The custom ME_CSH_PreviewEntity class identifies the sign through its prefab ancestry. Only that sign's preview receives SignHighlight.emat, which provides the solid orange fill. Other signs and previews created by unrelated tools are therefore not recolored. Unrecognized custom signs retain the normal material.
 
+Flag cloth is identified separately and uses a white solid material tinted per preview instance with the faction color configured in the world's FactionManager. A shared or unresolved variant stays neutral. In Auto, the combined HQ preview also stays neutral; choosing a faction manually colors its flag.
+
 The helpers exist only in the editor, have no physics, and are not saved as mission objects. They are cleared when a point is deleted or when you enter Game mode, and restored when you return to editing. Conflict remains responsible for spawning gameplay objects and assigning base ownership.
 
 ## Things to keep in mind
@@ -54,6 +56,7 @@ The helpers exist only in the editor, have no physics, and are not saved as miss
 - **Terrain alignment is not simulated yet.** The game additionally snaps objects to the surface. On slopes, individual elements may have different heights and tilts from those shown in the hologram.
 - Preview geometry can be simplified. The HQ outline encloses the available preview geometry and is not an exact collision boundary.
 - Highlighting helps you locate the sign, but does not check whether interaction is available or whether the approach is clear.
+- Flag color identifies the shown composition's faction, not the future owner of the base.
 - Manual selection uses the US/USSR/FIA keys; Auto can read custom campaign factions. Compatibility with other mods has not been separately verified.
 
 A practical workflow is to place a point, inspect the hologram and the sign's direction, leave clear space around it, then check the actual composition and interaction in Game mode.
